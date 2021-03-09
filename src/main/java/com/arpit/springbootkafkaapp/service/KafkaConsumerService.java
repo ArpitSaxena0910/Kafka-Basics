@@ -1,5 +1,6 @@
 package com.arpit.springbootkafkaapp.service;
 
+import com.arpit.springbootkafkaapp.Entity.Employee;
 import com.arpit.springbootkafkaapp.util.AppConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,5 +15,10 @@ public class KafkaConsumerService {
     @KafkaListener(topics = AppConstants.TOPIC_NAME, groupId = AppConstants.GROUP_ID)
     public void consume(String msg){
         logger.info("Message received -> {}",msg);
+    }
+
+    @KafkaListener(topics = AppConstants.TOPIC_NAME_EMPLOYEE, groupId = AppConstants.GROUP_ID)
+    public void consumeEmp(Employee employee){
+        logger.info("Employee Received -> {}",employee);
     }
 }
